@@ -8,17 +8,13 @@
     <meta name="theme-color" content="#6366f1">
     <title>Meu Projeto Web — Henrique Gabriel | IF Goiano</title>
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Folha de Estilos -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- Barra de Navegação -->
     <nav class="navbar">
         <div class="container nav-container">
             <a href="#hero" class="nav-logo">
@@ -35,7 +31,6 @@
                     <li><a href="conteudos-implementados/WebContent/index.html" class="nav-badge-link" title="Versão Clássica dos Conteúdos">Versão Clássica</a></li>
                 </ul>
 
-                <!-- Botão Alternador de Tema (Dark / Light) -->
                 <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro" title="Alternar tema">
                     <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -53,7 +48,6 @@
                     </svg>
                 </button>
 
-                <!-- Botão Hamburger Mobile -->
                 <button class="nav-toggle" id="navToggle" aria-label="Abrir Menu">
                     <span></span><span></span><span></span>
                 </button>
@@ -61,7 +55,6 @@
         </div>
     </nav>
 
-    <!-- Header Hero -->
     <header class="hero" id="hero">
         <div class="hero-particles" id="particles"></div>
         <div class="container hero-content">
@@ -92,7 +85,6 @@
         </div>
     </header>
 
-    <!-- Seção de Mídias -->
     <section class="section" id="midias">
         <div class="container">
             <div class="section-header">
@@ -102,7 +94,6 @@
             </div>
 
             <div class="cards-grid">
-                <!-- Card 1: Imagem -->
                 <div class="card card-image">
                     <div class="card-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -131,7 +122,6 @@
                     </div>
                 </div>
 
-                <!-- Card 2: Música -->
                 <div class="card card-music">
                     <div class="card-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -161,7 +151,6 @@
                     </div>
                 </div>
 
-                <!-- Card 3: Vídeo -->
                 <div class="card card-video">
                     <div class="card-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -185,7 +174,6 @@
                     </div>
                 </div>
 
-                <!-- Card 4: Documento PDF -->
                 <div class="card card-pdf">
                     <div class="card-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -219,7 +207,6 @@
         </div>
     </section>
 
-    <!-- Seção de Formulário Interativo -->
     <section class="section section-dark" id="formulario">
         <div class="container">
             <div class="section-header">
@@ -280,7 +267,6 @@
         </div>
     </section>
 
-    <!-- Seção Sobre o Projeto -->
     <section class="section" id="sobre">
         <div class="container">
             <div class="about-grid">
@@ -330,7 +316,6 @@
         </div>
     </section>
 
-    <!-- Rodapé -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -347,7 +332,6 @@
         </div>
     </footer>
 
-    <!-- Modal de Sucesso do Formulário -->
     <div class="custom-modal" id="successModal" role="dialog" aria-modal="true" aria-hidden="true">
         <div class="modal-backdrop" id="modalBackdrop"></div>
         <div class="modal-dialog">
@@ -361,7 +345,6 @@
                 <p class="modal-subtitle">Os dados foram validados conforme as regras de negócio do sistema.</p>
                 
                 <div class="modal-summary" id="modalSummary">
-                    <!-- Preenchido via JavaScript -->
                 </div>
 
                 <div class="modal-actions">
@@ -376,7 +359,6 @@
         </div>
     </div>
 
-    <!-- Modal Lightbox de Imagem -->
     <div class="custom-modal" id="imageLightboxModal" role="dialog" aria-modal="true" aria-hidden="true">
         <div class="modal-backdrop" id="imageLightboxBackdrop"></div>
         <div class="modal-dialog modal-dialog-image">
@@ -389,10 +371,8 @@
         </div>
     </div>
 
-    <!-- Container de Toasts de Notificação -->
     <div class="toast-container" id="toastContainer" aria-live="polite"></div>
 
-    <!-- Script Principal -->
     <script src="js/main.js"></script>
 </body>
 </html>

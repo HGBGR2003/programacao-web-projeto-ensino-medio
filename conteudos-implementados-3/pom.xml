@@ -20,7 +20,6 @@
     </properties>
 
     <dependencies>
-        <!-- Jakarta Servlet API 6.0 (Tomcat 10.1+ / Jetty 12+) -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
@@ -32,7 +31,6 @@
     <build>
         <finalName>conteudosimplementados3</finalName>
         <plugins>
-            <!-- Maven Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -43,7 +41,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Maven WAR Plugin apontando para WebContent -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>

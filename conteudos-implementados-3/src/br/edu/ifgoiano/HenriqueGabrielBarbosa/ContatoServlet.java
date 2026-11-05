@@ -19,7 +19,6 @@ public class ContatoServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Redireciona requisicoes GET diretamente para o formulario
         resp.sendRedirect(req.getContextPath() + "/ligacao/forma.html");
     }
 
@@ -33,21 +32,12 @@ public class ContatoServlet extends HttpServlet {
         String datatexto = req.getParameter("data");
         String peso = req.getParameter("peso");
 
-        // Validacao do peso (dispara ConversaoDePesoException em caso de erro)
         double pesoValido = validarPeso(peso);
 
-        // Validacao e formatacao da data (dispara DateTimeParseException em caso de erro)
         DateTimeFormatter formatadorEntrada = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter formatadorSaida = DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy", Locale.forLanguageTag("pt-BR"));
         LocalDate data = LocalDate.parse(datatexto != null ? datatexto.trim() : "", formatadorEntrada);
 
-        // Log no console do servidor
-        System.out.println("[ContatoServlet] Cadastro processado:");
-        System.out.println("  > Nome: " + nome);
-        System.out.println("  > Data: " + data);
-        System.out.println("  > Peso: " + pesoValido + " kg");
-
-        // Renderizacao da resposta HTML estilizada com Bootstrap 5.3
         PrintWriter out = resp.getWriter();
         out.println("<!DOCTYPE html>");
         out.println("<html lang=\"pt-BR\">");
@@ -112,7 +102,6 @@ public class ContatoServlet extends HttpServlet {
         }
     }
 
-    // Escape HTML para proteção contra injeção de script
     private String escapeHtml(String input) {
         if (input == null) return "";
         return input.replace("&", "&amp;")
@@ -122,7 +111,6 @@ public class ContatoServlet extends HttpServlet {
                     .replace("'", "&#x27;");
     }
 
-    // Método mantido para compatibilidade com versões legadas
     public void PegarPeso(String Peso1) throws ConversaoDePesoException {
         validarPeso(Peso1);
     }

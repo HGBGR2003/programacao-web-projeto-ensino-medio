@@ -1,20 +1,11 @@
-/* ==========================================================================
-   MAIN.JS — Funcionalidades, Temas, Validações e Interatividade
-   Henrique Gabriel Barbosa — IF Goiano (Programação Web)
-   ========================================================================== */
-
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ==========================================================================
-    // 1. TEMA CLARO / ESCURO (DARK / LIGHT THEME) COM PERSISTÊNCIA
-    // ==========================================================================
     const themeToggle = document.getElementById('themeToggle');
     const rootHtml = document.documentElement;
 
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    // Define o tema inicial (salvo > preferência do sistema > dark)
     const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
     rootHtml.setAttribute('data-theme', initialTheme);
 
@@ -28,9 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==========================================================================
-    // 2. NAVBAR: EFEITO DE SCROLL E MENU MOBILE
-    // ==========================================================================
     const navbar = document.querySelector('.navbar');
     const handleScroll = () => {
         navbar.classList.toggle('scrolled', window.scrollY > 50);
@@ -46,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('open');
         });
 
-        // Fecha o menu mobile ao clicar em qualquer link
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
@@ -55,9 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==========================================================================
-    // 3. SCROLL SUAVE PARA ÂNCORAS
-    // ==========================================================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
@@ -74,9 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ==========================================================================
-    // 4. DESTAQUE DO LINK ATIVO NA NAVBAR CONFORME SCROLL
-    // ==========================================================================
     const sections = document.querySelectorAll('section[id], header[id]');
     const navItems = document.querySelectorAll('.nav-links a:not(.nav-badge-link)');
 
@@ -101,9 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', highlightNav, { passive: true });
     highlightNav();
 
-    // ==========================================================================
-    // 5. ANIMAÇÕES DE SCROLL (INTERSECTION OBSERVER)
-    // ==========================================================================
     const animatedElements = document.querySelectorAll(
         '.card, .form-wrapper, .about-text, .about-stats'
     );
@@ -126,9 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
         animatedElements.forEach(el => el.classList.add('visible'));
     }
 
-    // ==========================================================================
-    // 6. PARTÍCULAS NO HERO
-    // ==========================================================================
     const particlesContainer = document.getElementById('particles');
     if (particlesContainer) {
         for (let i = 0; i < 30; i++) {
@@ -149,9 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ==========================================================================
-    // 7. LIGHTBOX DA IMAGEM
-    // ==========================================================================
     const openImageModal = document.getElementById('openImageModal');
     const imageLightboxModal = document.getElementById('imageLightboxModal');
     const btnCloseLightbox = document.getElementById('btnCloseLightbox');
@@ -186,9 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnCloseLightbox) btnCloseLightbox.addEventListener('click', closeLightbox);
     if (imageLightboxBackdrop) imageLightboxBackdrop.addEventListener('click', closeLightbox);
 
-    // ==========================================================================
-    // 8. FORMULÁRIO: VALIDAÇÃO COMPLETA E MODAL DE SUCESSO
-    // ==========================================================================
     const form = document.getElementById('mainForm');
     const inputNome = document.getElementById('nome');
     const inputEmail = document.getElementById('email');
@@ -202,7 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnCloseModal = document.getElementById('btnCloseModal');
     const modalSummary = document.getElementById('modalSummary');
 
-    // Botão para preencher data de hoje
     const fillTodayDate = () => {
         if (inputData) {
             const today = new Date().toISOString().split('T')[0];
@@ -212,7 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     if (btnFillToday) btnFillToday.addEventListener('click', fillTodayDate);
-    // Inicializa data com hoje se vazio
     if (inputData && !inputData.value) {
         fillTodayDate();
     }
@@ -231,7 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (errElem) errElem.textContent = '';
     };
 
-    // Validação inline ao sair do campo
     inputNome?.addEventListener('blur', () => {
         if (!inputNome.value.trim() || inputNome.value.trim().length < 3) {
             setFieldError(inputNome, 'errorNome', 'Informe o nome completo (mínimo 3 caracteres).');
@@ -266,14 +232,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Envio do Formulário
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
 
             let isValid = true;
 
-            // Validar Nome
             const nomeVal = inputNome.value.trim();
             if (!nomeVal || nomeVal.length < 3) {
                 setFieldError(inputNome, 'errorNome', 'Informe o nome completo (mínimo 3 caracteres).');
@@ -282,7 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearFieldError(inputNome, 'errorNome');
             }
 
-            // Validar Email
             const emailVal = inputEmail.value.trim();
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailVal || !emailRegex.test(emailVal)) {
@@ -292,7 +255,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearFieldError(inputEmail, 'errorEmail');
             }
 
-            // Validar Senha
             const senhaVal = inputSenha.value;
             if (!senhaVal || senhaVal.length < 6) {
                 setFieldError(inputSenha, 'errorSenha', 'A senha deve conter no mínimo 6 caracteres.');
@@ -301,7 +263,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearFieldError(inputSenha, 'errorSenha');
             }
 
-            // Validar Data
             const dataVal = inputData.value;
             if (!dataVal) {
                 setFieldError(inputData, 'errorData', 'Selecione uma data válida.');
@@ -310,7 +271,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearFieldError(inputData, 'errorData');
             }
 
-            // Validar Peso
             const pesoVal = parseFloat(inputPeso.value);
             if (isNaN(pesoVal) || pesoVal <= 0 || pesoVal > 500) {
                 setFieldError(inputPeso, 'errorPeso', 'Informe um peso numérico positivo válido (ex: 72.5).');
@@ -324,11 +284,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Formatação amigável da data
             const [ano, mes, dia] = dataVal.split('-');
             const dataFormatadaPtBr = `${dia}/${mes}/${ano}`;
 
-            // Preenche o Modal de Sucesso
             if (modalSummary) {
                 modalSummary.innerHTML = `
                     <div class="summary-item">
@@ -349,12 +307,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="summary-item">
                         <span class="summary-label">Status do Backend:</span>
-                        <span class="summary-value text-success" style="color: var(--success);">Validado &bull; Pronto para Servlet</span>
+                        <span class="summary-value" style="color: var(--success);">Validado &bull; Pronto para Servlet</span>
                     </div>
                 `;
             }
 
-            // Abre o modal
             if (successModal) {
                 successModal.classList.add('show');
                 successModal.setAttribute('aria-hidden', 'false');
@@ -364,7 +321,6 @@ document.addEventListener('DOMContentLoaded', () => {
             showToast('Cadastro realizado e validado com sucesso!', 'success');
         });
 
-        // Reset do formulário
         form.addEventListener('reset', () => {
             setTimeout(() => {
                 document.querySelectorAll('.is-valid, .is-invalid').forEach(el => {
@@ -389,7 +345,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnCloseModal) btnCloseModal.addEventListener('click', closeSuccessModal);
     if (modalBackdrop) modalBackdrop.addEventListener('click', closeSuccessModal);
 
-    // Fechar modais ao teclar ESC
     window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeLightbox();
@@ -397,9 +352,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // ==========================================================================
-    // 9. SISTEMA DE TOASTS DE NOTIFICAÇÃO
-    // ==========================================================================
     function showToast(message, type = 'info') {
         const container = document.getElementById('toastContainer');
         if (!container) return;
