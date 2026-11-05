@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projeto de Programação Web do IF Goiano — Demonstração interativa de mídias (PDF, Música, Vídeo, Imagem) e formulário moderno.">
+    <meta name="author" content="Henrique Gabriel Barbosa">
+    <meta name="theme-color" content="#6366f1">
+    <title>Meu Projeto Web — Henrique Gabriel | IF Goiano</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Folha de Estilos -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Barra de Navegação -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-icon">🚀</span>
+                <span class="logo-text">MeuProjeto</span>
+            </a>
+            
+            <div class="nav-right">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#hero">Início</a></li>
+                    <li><a href="#midias">Mídias</a></li>
+                    <li><a href="#formulario">Formulário</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="conteudos-implementados/WebContent/index.html" class="nav-badge-link" title="Versão Clássica dos Conteúdos">Versão Clássica</a></li>
+                </ul>
+
+                <!-- Botão Alternador de Tema (Dark / Light) -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+
+                <!-- Botão Hamburger Mobile -->
+                <button class="nav-toggle" id="navToggle" aria-label="Abrir Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Hero -->
+    <header class="hero" id="hero">
+        <div class="hero-particles" id="particles"></div>
+        <div class="container hero-content">
+            <span class="hero-badge">📚 Projeto 1º Trimestre &bull; IF Goiano</span>
+            <h1 class="hero-title">
+                Conteúdos <span class="gradient-text">Implementados</span>
+            </h1>
+            <p class="hero-subtitle">
+                Uma coleção completa de mídias e funcionalidades web modernas — Imagem, Música, Vídeo e Documento PDF — 
+                desenvolvido para a disciplina de Programação Web no Ensino Médio Integrado.
+            </p>
+            <div class="hero-actions">
+                <a href="#midias" class="btn btn-primary">
+                    <span>Explorar Mídias</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+                <a href="#formulario" class="btn btn-outline">
+                    <span>Testar Formulário</span>
+                </a>
+                <a href="conteudos-implementados/WebContent/index.html" class="btn btn-ghost">
+                    <span>Versão Clássica &rarr;</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </header>
+
+    <!-- Seção de Mídias -->
+    <section class="section" id="midias">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Mídias Nativas</span>
+                <h2 class="section-title">Conteúdos Multimídia</h2>
+                <p class="section-desc">Acesse, reproduza e interaja com os arquivos de imagem, música, vídeo e documento diretamente na interface.</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Card 1: Imagem -->
+                <div class="card card-image">
+                    <div class="card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="3"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <path d="M21 15l-5-5L5 21"/>
+                        </svg>
+                    </div>
+                    <div class="media-thumb-container" id="openImageModal" role="button" tabindex="0" title="Clique para expandir a imagem">
+                        <img src="assets/imagens/imagem.jpg" alt="Demonstração do Projeto" class="media-thumb" loading="lazy">
+                        <div class="thumb-overlay">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                            <span>Ampliar</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Imagem em Alta Resolução</h3>
+                    <p class="card-desc">Imagem fotográfica otimizada com visualização inline e suporte a lightbox em tela cheia.</p>
+                    <div class="card-actions-row">
+                        <a href="assets/imagens/imagem.jpg" class="card-link" target="_blank" rel="noopener">
+                            <span>Abrir original</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="assets/imagens/imagem.jpg" download="imagem-projeto.jpg" class="btn-icon" title="Baixar imagem">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2: Música -->
+                <div class="card card-music">
+                    <div class="card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18V5l12-2v13"/>
+                            <circle cx="6" cy="18" r="3"/>
+                            <circle cx="18" cy="16" r="3"/>
+                        </svg>
+                    </div>
+                    <div class="audio-banner">
+                        <div class="audio-banner-icon">🎵</div>
+                        <div class="audio-banner-info">
+                            <span class="audio-title">Around — Trilha Sonora</span>
+                            <span class="audio-subtitle">Formato MP3 &bull; Áudio Estéreo</span>
+                        </div>
+                    </div>
+                    <audio controls class="card-audio" preload="metadata">
+                        <source src="assets/musica/around.mp3" type="audio/mpeg">
+                        Seu navegador não suporta o elemento de áudio HTML5.
+                    </audio>
+                    <h3 class="card-title mt-3">Música e Áudio</h3>
+                    <p class="card-desc">Player de áudio nativo HTML5 com controles de reprodução, volume e reprodução contínua.</p>
+                    <div class="card-actions-row">
+                        <a href="assets/musica/around.mp3" download="around.mp3" class="card-link">
+                            <span>Baixar arquivo MP3</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3: Vídeo -->
+                <div class="card card-video">
+                    <div class="card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="4" width="20" height="16" rx="3"/>
+                            <polygon points="10,8 16,12 10,16"/>
+                        </svg>
+                    </div>
+                    <div class="video-container">
+                        <video controls class="card-video-player" preload="metadata">
+                            <source src="assets/video/engracado.mp4" type="video/mp4">
+                            Seu navegador não suporta o elemento de vídeo HTML5.
+                        </video>
+                    </div>
+                    <h3 class="card-title mt-3">Vídeo MP4 Incorporado</h3>
+                    <p class="card-desc">Player de vídeo responsivo com proporção ajustável e suporte a tela cheia nativa.</p>
+                    <div class="card-actions-row">
+                        <a href="assets/video/engracado.mp4" download="engracado.mp4" class="card-link">
+                            <span>Baixar vídeo MP4</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 4: Documento PDF -->
+                <div class="card card-pdf">
+                    <div class="card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 02 2h12a2 2 0 0 02-2V8z"/>
+                            <polyline points="14,2 14,8 20,8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <line x1="10" y1="9" x2="8" y2="9"/>
+                        </svg>
+                    </div>
+                    <div class="pdf-banner">
+                        <div class="pdf-badge">PDF</div>
+                        <div class="pdf-info">
+                            <span class="pdf-title">tarefa.pdf</span>
+                            <span class="pdf-meta">Documentação &bull; Guia Prático</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title mt-3">Documento PDF da Tarefa</h3>
+                    <p class="card-desc">Arquivo oficial das orientações pedagógicas para leitura ou download direto.</p>
+                    <div class="card-actions-row">
+                        <a href="assets/docs/tarefa.pdf" class="card-link" target="_blank" rel="noopener">
+                            <span>Visualizar online</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="assets/docs/tarefa.pdf" download="tarefa.pdf" class="btn-icon" title="Baixar PDF">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Formulário Interativo -->
+    <section class="section section-dark" id="formulario">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Interação &amp; Backend</span>
+                <h2 class="section-title">Formulário de Cadastro</h2>
+                <p class="section-desc">Validações automáticas em tempo real com compatibilidade com o Servlet Jakarta Java.</p>
+            </div>
+
+            <div class="form-wrapper">
+                <form class="form" id="mainForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nome">Nome completo <span class="required">*</span></label>
+                            <input type="text" id="nome" name="nome" placeholder="Ex: Maria da Silva" required minlength="3">
+                            <span class="field-error" id="errorNome"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="usuario@exemplo.com" required>
+                            <span class="field-error" id="errorEmail"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="senha">Senha <span class="required">*</span></label>
+                            <input type="password" id="senha" name="senha" placeholder="Mínimo 6 caracteres" required minlength="6">
+                            <span class="field-error" id="errorSenha"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <label for="data" class="mb-0">Data de referência <span class="required">*</span></label>
+                                <button type="button" class="btn-text-action" id="btnFillToday">Preencher hoje</button>
+                            </div>
+                            <input type="date" id="data" name="data" required>
+                            <span class="field-error" id="errorData"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="peso">Peso corporal (kg) <span class="required">*</span></label>
+                        <input type="number" id="peso" name="peso" step="0.1" min="1" max="500" placeholder="Ex: 72.5" required>
+                        <span class="form-hint">O servidor valida se o peso é estritamente maior que 0 e realista (&le; 500 kg).</span>
+                        <span class="field-error" id="errorPeso"></span>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-lg" id="btnSubmit">
+                            <span>Enviar Cadastro</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                        </button>
+                        <button type="reset" class="btn btn-outline" id="btnReset">
+                            <span>Limpar</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre o Projeto -->
+    <section class="section" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <span class="section-tag">Institucional</span>
+                    <h2 class="section-title">Sobre o Projeto</h2>
+                    <p>
+                        Este projeto foi desenvolvido como atividade avaliativa da disciplina de 
+                        <strong>Programação Web</strong> no <strong>IF Goiano</strong> durante o 
+                        Ensino Médio Integrado.
+                    </p>
+                    <p>
+                        O objetivo central é consolidar os fundamentos da arquitetura web cliente-servidor:
+                        estruturação com <strong>HTML5 semântico</strong>, estilização moderna com 
+                        <strong>CSS3 avançado</strong> (variáveis, temas e grid responsivo), interatividade com 
+                        <strong>JavaScript ES6+</strong> e integração completa com <strong>Servlets Java (Jakarta EE)</strong>.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3 Variables</span>
+                        <span class="tech-tag">JavaScript ES6+</span>
+                        <span class="tech-tag">Jakarta Servlets</span>
+                        <span class="tech-tag">Dark/Light Mode</span>
+                        <span class="tech-tag">100% Responsivo</span>
+                    </div>
+                </div>
+
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Formatos de Mídia</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Temas (Dark / Light)</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Sem Dependências Pesadas</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Melhorias Implementadas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🚀</span>
+                    <span class="footer-brand-title">MeuProjeto Web</span>
+                    <span class="footer-badge">Versão 2.0 Atualizada</span>
+                </div>
+                <p class="footer-copy">
+                    Desenvolvido por <strong>Henrique Gabriel Barbosa</strong> &bull; 
+                    Instituto Federal Goiano &bull; Programação Web
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Sucesso do Formulário -->
+    <div class="custom-modal" id="successModal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header-icon">
+                    <div class="success-icon-badge">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                </div>
+                <h3 class="modal-title">Cadastro Processado com Sucesso!</h3>
+                <p class="modal-subtitle">Os dados foram validados conforme as regras de negócio do sistema.</p>
+                
+                <div class="modal-summary" id="modalSummary">
+                    <!-- Preenchido via JavaScript -->
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-primary" id="btnCloseModal">
+                        <span>Entendido</span>
+                    </button>
+                    <a href="../conteudos-implementados-3/WebContent/ligacao/forma.html" class="btn btn-outline" target="_blank" rel="noopener">
+                        <span>Abrir no Servlet Java &rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Lightbox de Imagem -->
+    <div class="custom-modal" id="imageLightboxModal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-backdrop" id="imageLightboxBackdrop"></div>
+        <div class="modal-dialog modal-dialog-image">
+            <div class="modal-image-content">
+                <button type="button" class="btn-close-lightbox" id="btnCloseLightbox" aria-label="Fechar">
+                    &times;
+                </button>
+                <img src="assets/imagens/imagem.jpg" alt="Visualização expandida" class="lightbox-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- Container de Toasts de Notificação -->
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+    <!-- Script Principal -->
+    <script src="js/main.js"></script>
+</body>
+</html>

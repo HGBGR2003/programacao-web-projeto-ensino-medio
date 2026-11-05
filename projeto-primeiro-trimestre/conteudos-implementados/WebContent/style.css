@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+/* Estilos para a página clássica modernizada */
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.btn-media {
+    border-radius: 14px;
+    transition: all 0.25s ease-in-out;
+    background-color: #fff;
+    min-height: 130px;
+    text-decoration: none;
+}
+
+.btn-media:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}

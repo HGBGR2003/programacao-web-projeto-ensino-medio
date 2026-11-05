@@ -1,0 +1,5 @@
+/* ==========================================================================
+   Redirecionamento / Import do style.css principal
+   Mantido para compatibilidade com eventuais chamadas legadas
+   ========================================================================== */
+@import url("../../style.css");

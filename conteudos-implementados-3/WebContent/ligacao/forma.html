@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro - Programação Web</title>
+    
+    <!-- Bootstrap 5.3 & Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Estilos Customizados -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <!-- Barra de Navegação -->
+    <header class="custom-navbar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="../index.html" class="navbar-brand text-decoration-none">
+                <i class="bi bi-code-slash text-primary"></i>
+                Programação Web
+            </a>
+            <span class="brand-badge">
+                <i class="bi bi-mortarboard-fill me-1"></i> IF Goiano
+            </span>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container my-5">
+        <div class="form-card">
+            <!-- Cabeçalho do Card -->
+            <div class="text-center mb-4">
+                <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 text-primary rounded-circle p-3 mb-2">
+                    <i class="bi bi-person-bounding-box fs-3"></i>
+                </div>
+                <h2 class="fw-bold mb-1">Formulário de Contato</h2>
+                <p class="text-muted small">Preencha os campos abaixo para processamento no Servlet Java (Jakarta EE)</p>
+            </div>
+
+            <!-- Formulário -->
+            <form action="cadastro" method="post" id="formCadastro">
+                <!-- Nome -->
+                <div class="mb-3">
+                    <label for="campoNome" class="form-label">
+                        <i class="bi bi-person text-primary"></i>
+                        Nome do Usuário:
+                    </label>
+                    <input id="campoNome" class="form-control-modern" type="text" name="nome" placeholder="Ex: Maria da Silva" required>
+                </div>
+
+                <!-- Senha -->
+                <div class="mb-3">
+                    <label for="campoSenha" class="form-label">
+                        <i class="bi bi-lock text-primary"></i>
+                        Senha:
+                    </label>
+                    <input id="campoSenha" class="form-control-modern" type="password" name="senha" placeholder="Digite uma senha segura" required>
+                </div>
+
+                <!-- Data -->
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <label for="campoData" class="form-label mb-0">
+                            <i class="bi bi-calendar-event text-primary"></i>
+                            Informe a Data Atual:
+                        </label>
+                        <button type="button" class="btn btn-sm btn-link p-0 text-decoration-none text-primary small" id="btnHoje">
+                            <i class="bi bi-calendar-check me-1"></i>Hoje
+                        </button>
+                    </div>
+                    <input id="campoData" class="form-control-modern" type="text" name="data" placeholder="dd/mm/aaaa (ex: 05/11/2026)" maxlength="10" required>
+                    <div class="form-hint">O backend Java requer obrigatoriamente o formato <code>dd/MM/yyyy</code>. Erros acionam <code>DateTimeParseException</code>.</div>
+                </div>
+
+                <!-- Peso -->
+                <div class="mb-4">
+                    <label for="campoPeso" class="form-label">
+                        <i class="bi bi-speedometer2 text-primary"></i>
+                        Peso (kg):
+                    </label>
+                    <input id="campoPeso" class="form-control-modern" type="text" name="peso" placeholder="Ex: 72.5 ou 72,5" required>
+                    <div class="form-hint">Valores não numéricos ou &le; 0 acionam <code>ConversaoDePesoException</code> no servidor.</div>
+                </div>
+
+                <!-- Ações -->
+                <div class="d-flex justify-content-between align-items-center pt-2">
+                    <a href="../index.html" class="btn-modern-secondary">
+                        <i class="bi bi-arrow-left"></i>
+                        Voltar
+                    </a>
+                    <button type="submit" class="btn-modern-primary">
+                        Prosseguir
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <p class="mb-0">Projeto de Programação Web &bull; Ensino Médio Integrado &bull; IF Goiano</p>
+        </div>
+    </footer>
+
+    <!-- Script para máscara de data simples dd/mm/aaaa e botão hoje -->
+    <script>
+        const inputData = document.getElementById('campoData');
+        inputData.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 8) value = value.substring(0, 8);
+            if (value.length > 4) {
+                value = value.replace(/^(\d{2})(\d{2})(\d{0,4})/, '$1/$2/$3');
+            } else if (value.length > 2) {
+                value = value.replace(/^(\d{2})(\d{0,2})/, '$1/$2');
+            }
+            e.target.value = value;
+        });
+
+        document.getElementById('btnHoje').addEventListener('click', function() {
+            const now = new Date();
+            const dia = String(now.getDate()).padStart(2, '0');
+            const mes = String(now.getMonth() + 1).padStart(2, '0');
+            const ano = now.getFullYear();
+            inputData.value = `${dia}/${mes}/${ano}`;
+        });
+    </script>
+
+    <!-- Bootstrap 5.3 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

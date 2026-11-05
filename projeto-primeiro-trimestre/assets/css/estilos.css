@@ -1,0 +1,72 @@
+
+.btn-primary{
+    background-color: brown;
+    color: chocolate;
+    border-radius: 6px;
+    padding: 15px 20px;
+    border: 1px solid #eee;
+    font-size: 18px;
+}
+
+/*  # para id e . para classe  */
+
+.btn1{
+    background-color: tomato !important;
+    color: blue !important;
+    position: absolute;
+    right: 120px;
+    border: 3px solid;
+}
+
+.us-1{
+    color: yellow !important;
+    background-color: brown !important; 
+    border: 5px solid black !important;
+    border-radius: 10px !important;
+}
+
+::-webkit-input-placeholder{
+    color:#4B0082 !important;
+}
+
+.sh{
+    border: 5px solid #00008b !important ;
+    background-color: springgreen !important;
+    color: violet !important;
+    border-radius: 10px !important;
+}
+
+.dt{
+    border: solid 5px #00ff00 !important;
+    background-color: #1e90ff !important ;
+    color: sandybrown !important;
+    border-radius: 10px !important;
+}
+
+.btn2{
+    background-color: #808000 !important;
+    color: #b8860b !important;
+}
+
+.ps{
+    background-color: palevioletred !important;
+    border: solid 5px black !important;
+    border-radius: 10px !important;
+
+}
+
+.d1{
+    border-radius: 10px !important;
+    background-color: rgb(43, 230, 121) !important;
+    border: solid 5px black !important;
+    padding: 10px 20px !important;
+    text-align: center !important;
+}
+
+.b1{
+    background-color: brown !important;
+    border-radius: 10px !important;
+    
+   
+
+}
